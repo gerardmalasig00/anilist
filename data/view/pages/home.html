@@ -6,9 +6,10 @@
             <div class="container">
                 <h1>Anilist</h1>
                 <h2>Browse all your favorite Anime and Manga, and view their rankings in realtime</h2>
-                <div class="search mb-3 d-flex">
+                <div class="search mb-3 d-flex form-group">
                     <autocomplete v-model="listId"
                         name="listId"
+                        placeholder="Type your favorite Anime Movies or Series Here.."
                         initial-value=""
                         initial-display=""
                         :source="getSource"

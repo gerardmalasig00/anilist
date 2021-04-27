@@ -29,6 +29,7 @@ app.locals.app.description = 'Browse all your favorite anime and manga here.';
 // Runs once on app start
 app.use(function (req, res, next) {
     app.locals.CONFIG = lodash.cloneDeep(CONFIG) // Config
+    res.locals.urlPath = req.originalUrl;
     next();
 });
 

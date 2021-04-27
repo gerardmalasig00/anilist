@@ -5,24 +5,28 @@
         <div id="landing" >
             <div class="container" 
             style="background:linear-gradient(to right, rgba(53, 64, 64, 1) 10%, transparent), url({{anime.attributes.coverImage.original}})no-repeat center center;">
-                <div class="details w-50 w-sm-100">
-                    <h1>{{anime.attributes.canonicalTitle}}</h1>
-                    <p>
-                        <span>{{anime.attributes.startDate|formatDate("YYYY")}}</span>
-                        <span class="line">{{anime.attributes.ageRating}}</span>
-                        <span class="line">{{anime.attributes.ageRatingGuide}}</span>
-                        <span class="line">{{anime.attributes.episodeCount}} Episodes</span>
-                    </p>
-                    <h2>{{anime.attributes.synopsis}}</h2>
-                </div>
-                <div class="mt-3">
-                    <a href="#episodes" class="accent-button">View Episodes</a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="details">
+                            <h1>{{anime.attributes.canonicalTitle}}</h1>
+                            <p>
+                                <span>{{anime.attributes.startDate|formatDate("YYYY")}}</span>
+                                <span class="line">{{anime.attributes.ageRating}}</span>
+                                <span class="line">{{anime.attributes.ageRatingGuide}}</span>
+                                <span class="line">{{anime.attributes.episodeCount}} Episodes</span>
+                            </p>
+                            <h2>{{anime.attributes.synopsis}}</h2>
+                        </div>
+                        <div class="pt-3">
+                            <a href="#episodes" class="accent-button">View Episodes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="episodes">
             <div class="container">
-                <div class="header">
+                <div class="header d-block d-lg-flex flex-xs-column">
                     <h2>Episodes</h2>
                     <p>{{anime.attributes.canonicalTitle}}</p>
                 </div>
@@ -31,17 +35,67 @@
                     <p>{{anime.attributes.description}}</p>
                 </div>
                 <div class="episodes">
-                    {% for episode in episodes %}
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="{{episode.attributes.thumbnail.original}}" alt="Thumbnail">
-                            </div>
-                            <div class="card-content">
-                                <h4>{{episode.attributes.number}}. {{episode.attributes.canonicalTitle}}</h4>
-                                <p>{{episode.attributes.synopsis|shortenString}}</p>
-                            </div>
+                    <div v-if="!onLoad" v-for="episode in episodesData.episodes" class="card">
+                        <div class="card-header">
+                            <img :src="episode.attributes.thumbnail.original" alt="Thumbnail">
                         </div>
-                    {% endfor %}
+                        <div class="card-content">
+                            <h4>
+                                <span>${episode.attributes.number}. ${episode.attributes.canonicalTitle}</span>
+                                <span class="epiLength">${episode.attributes.length} Minutes</span>
+                            </h4>
+                            <p>${shortenString(episode.attributes.synopsis)}</p>
+                        </div>
+                    </div>
+                    <div v-else  class="card onload">
+                        <div  class="card-header">
+                            <svg viewBox="0 0 250 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="card-on-load">
+                                <rect id="bg" width="250" height="140" fill="#4F5C5C" fill-opacity="0.99"/>
+                                <path id="logo" d="M79.812 76.75H68.437L66.267 82H60.457L71.377 57.5H76.977L87.932 82H81.982L79.812 76.75ZM78.027 72.445L74.142 63.065L70.257 72.445H78.027ZM101.534 62.89C103.867 62.89 105.746 63.59 107.169 64.99C108.616 66.39 109.339 68.4667 109.339 71.22V82H103.879V72.06C103.879 70.5667 103.552 69.4583 102.899 68.735C102.246 67.9883 101.301 67.615 100.064 67.615C98.6872 67.615 97.5905 68.0467 96.7738 68.91C95.9572 69.75 95.5488 71.01 95.5488 72.69V82H90.0888V63.17H95.3038V65.375C96.0272 64.5817 96.9255 63.975 97.9988 63.555C99.0722 63.1117 100.251 62.89 101.534 62.89ZM121.883 62.89C124.8 62.89 127.04 63.59 128.603 64.99C130.166 66.3667 130.948 68.455 130.948 71.255V82H125.838V79.655C124.811 81.405 122.898 82.28 120.098 82.28C118.651 82.28 117.391 82.035 116.318 81.545C115.268 81.055 114.463 80.3783 113.903 79.515C113.343 78.6517 113.063 77.6717 113.063 76.575C113.063 74.825 113.716 73.4483 115.023 72.445C116.353 71.4417 118.395 70.94 121.148 70.94H125.488C125.488 69.75 125.126 68.84 124.403 68.21C123.68 67.5567 122.595 67.23 121.148 67.23C120.145 67.23 119.153 67.3933 118.173 67.72C117.216 68.0233 116.4 68.4433 115.723 68.98L113.763 65.165C114.79 64.4417 116.015 63.8817 117.438 63.485C118.885 63.0883 120.366 62.89 121.883 62.89ZM121.463 78.605C122.396 78.605 123.225 78.395 123.948 77.975C124.671 77.5317 125.185 76.89 125.488 76.05V74.125H121.743C119.503 74.125 118.383 74.86 118.383 76.33C118.383 77.03 118.651 77.59 119.188 78.01C119.748 78.4067 120.506 78.605 121.463 78.605ZM135.89 56.03H141.35V82H135.89V56.03ZM146.417 63.17H151.877V82H146.417V63.17ZM149.147 60.545C148.144 60.545 147.327 60.2533 146.697 59.67C146.067 59.0867 145.752 58.3633 145.752 57.5C145.752 56.6367 146.067 55.9133 146.697 55.33C147.327 54.7467 148.144 54.455 149.147 54.455C150.15 54.455 150.967 54.735 151.597 55.295C152.227 55.855 152.542 56.555 152.542 57.395C152.542 58.305 152.227 59.0633 151.597 59.67C150.967 60.2533 150.15 60.545 149.147 60.545ZM163.279 82.28C161.716 82.28 160.188 82.0933 158.694 81.72C157.201 81.3233 156.011 80.8333 155.124 80.25L156.944 76.33C157.784 76.8667 158.799 77.31 159.989 77.66C161.179 77.9867 162.346 78.15 163.489 78.15C165.799 78.15 166.954 77.5783 166.954 76.435C166.954 75.8983 166.639 75.5133 166.009 75.28C165.379 75.0467 164.411 74.8483 163.104 74.685C161.564 74.4517 160.293 74.1833 159.289 73.88C158.286 73.5767 157.411 73.04 156.664 72.27C155.941 71.5 155.579 70.4033 155.579 68.98C155.579 67.79 155.918 66.74 156.594 65.83C157.294 64.8967 158.298 64.1733 159.604 63.66C160.934 63.1467 162.498 62.89 164.294 62.89C165.624 62.89 166.943 63.0417 168.249 63.345C169.579 63.625 170.676 64.0217 171.539 64.535L169.719 68.42C168.063 67.4867 166.254 67.02 164.294 67.02C163.128 67.02 162.253 67.1833 161.669 67.51C161.086 67.8367 160.794 68.2567 160.794 68.77C160.794 69.3533 161.109 69.7617 161.739 69.995C162.369 70.2283 163.373 70.45 164.749 70.66C166.289 70.9167 167.549 71.1967 168.529 71.5C169.509 71.78 170.361 72.305 171.084 73.075C171.808 73.845 172.169 74.9183 172.169 76.295C172.169 77.4617 171.819 78.5 171.119 79.41C170.419 80.32 169.393 81.0317 168.039 81.545C166.709 82.035 165.123 82.28 163.279 82.28ZM187.683 81.09C187.146 81.4867 186.481 81.79 185.688 82C184.918 82.1867 184.101 82.28 183.238 82.28C180.998 82.28 179.26 81.7083 178.023 80.565C176.81 79.4217 176.203 77.7417 176.203 75.525V67.79H173.298V63.59H176.203V59.005H181.663V63.59H186.353V67.79H181.663V75.455C181.663 76.2483 181.861 76.8667 182.258 77.31C182.678 77.73 183.261 77.94 184.008 77.94C184.871 77.94 185.606 77.7067 186.213 77.24L187.683 81.09Z" fill="white"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div  class="card-content">
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <div class="links">
+                        <a @click="getLink('first')">First</a>
+                        <a @click="getLink('last')">Last</a>
+                        <a v-show="episodesData.links.prev" @click="getLink('prev')">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" viewBox="0 0 192.701 192.701" style="enable-background:new 0 0 192.701 192.701;" xml:space="preserve">
+                            <g>
+                                <g fill="currentColor" id="Double_Chevron_Left">
+                                    <path d="M29.641,96.345l74.54-75.61c4.704-4.74,4.704-12.439,0-17.179c-4.704-4.74-12.319-4.74-17.011,0l-82.997,84.2
+                                        c-4.511,4.559-4.535,12.608,0,17.191l83.009,84.2c4.692,4.74,12.319,4.74,17.011,0c4.704-4.74,4.704-12.439,0-17.179
+                                        L29.641,96.345z"/>
+                                    <path d="M113.853,96.345l74.54-75.61c4.704-4.74,4.704-12.439,0-17.179c-4.704-4.74-12.319-4.74-17.011,0l-82.997,84.2
+                                        c-4.511,4.559-4.535,12.608,0,17.191l82.997,84.2c4.704,4.74,12.319,4.74,17.011,0c4.704-4.74,4.704-12.439,0-17.179
+                                        L113.853,96.345z"/>
+                                </g>
+                            </g>
+                            </svg>
+                        </a>
+                        <a v-show="episodesData.links.next" @click="getLink('next')">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="15px" viewBox="0 0 192.689 192.689" style="enable-background:new 0 0 192.689 192.689;" xml:space="preserve">
+                            <g>
+                                <g fill="currentColor" id="Double_Chevron_Right">
+                                    <path d="M188.527,87.755l-83.009-84.2c-4.692-4.74-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l74.54,75.61
+                                        l-74.54,75.61c-4.704,4.74-4.704,12.439,0,17.179c4.704,4.74,12.319,4.74,17.011,0l82.997-84.2
+                                        C193.05,100.375,193.062,92.327,188.527,87.755z"/>
+                                    <path d="M104.315,87.755l-82.997-84.2c-4.704-4.74-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l74.528,75.61
+                                        l-74.54,75.61c-4.704,4.74-4.704,12.439,0,17.179s12.319,4.74,17.011,0l82.997-84.2C108.838,100.375,108.85,92.327,104.315,87.755
+                                        z"/>
+                                </g>
+                            </g>
+                            </svg>
+                        </a>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,15 +104,74 @@
 
 {% block scripts %}
 {{ super() }}
+<script src="{{app.url}}/js/vue-my-mixins.js"></script>
     <script>
         var vAnimeRead = new Vue({
             el: '#vAnimeRead',
             delimiters: ["${", "}"],
             mixins: [
+                VueMyMixins.mixin
             ],
             components: {
             },
             data: {
+                episodeLimit: 10,
+                animeId: '{{anime.id}}',
+                episodesData: [],
+                onLoad: true
+
+            },
+            async mounted ()  {
+                this.episodesData = await this.getEpisodes(`https://kitsu.io/api/edge/episodes?page[limit]=10&page[offset]=0&filter[mediaId]=${this.animeId}`)
+                this.onLoad = false
+            },
+            methods: {
+                getEpisodes: (query) => {
+                    return axios.get(query, {
+                        headers: {
+                            'Accept': 'application/vnd.api+json',
+                            'Content-Type': 'application/vnd.api+json'
+                        }
+                    }).then(response => {
+                        let episodes = response.data.data
+                        let links = response.data.links
+                        let episodesCount = response.data.meta.count
+                        return {
+                            episodes, links, episodesCount
+                        }
+                    })
+
+                },
+                getLink: async (value) => {
+                    try {
+                        vAnimeRead.onLoad = true
+                        let query = vAnimeRead.episodesData.links[value]
+                        let response = await axios.get(`${query}`, {
+                            headers: {
+                                'Accept': 'application/vnd.api+json',
+                                'Content-Type': 'application/vnd.api+json'
+                            }
+                        })
+                    
+                        let episodes = response.data.data
+                        episodes = _.filter(episodes, (episode) => {
+                            return episode.attributes.canonicalTitle
+                        })
+                        let links = response.data.links
+                        let episodesCount = response.data.meta.count
+                        let data = {
+                            episodes,
+                            links,
+                            episodesCount
+                        }
+                        vAnimeRead.episodesData = data
+                        vAnimeRead.onLoad = false
+                        return
+                    }catch (error) {
+                        console.log(error)
+                    }
+                }
+                
             }
         })    
     </script>

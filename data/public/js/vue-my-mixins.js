@@ -40,6 +40,12 @@ VueMyMixins.mixin = {
                 return null;
             }
             return formatted;
+        },
+        shortenString: function (value) {
+            if (value.length > 100) {
+                return value.substring(0, 100) + '...'
+            }
+            return value
         }
     }
 }

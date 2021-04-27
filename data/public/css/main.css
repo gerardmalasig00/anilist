@@ -14,22 +14,49 @@ body {
 
 nav {
   z-index: 10;
+  padding-bottom: 0;
 }
 
 nav .navbar-brand {
   font-weight: bold;
 }
 
+@media (max-width: 991px) {
+  nav .navbar-nav {
+    padding: 1em 0;
+  }
+}
+
 nav .navbar-nav .nav-item {
   padding-left: 1em;
 }
 
-nav .navbar-nav .nav-item .nav-link.active {
+@media (max-width: 991px) {
+  nav .navbar-nav .nav-item {
+    padding: 0 1em;
+  }
+}
+
+@media (max-width: 991px) {
+  nav .navbar-nav .nav-item.active {
+    background: #FF4B77;
+  }
+}
+
+nav .navbar-nav .nav-item.active .nav-link {
+  font-weight: bold;
+  color: white;
   border-bottom: 3px solid #FF4B77;
 }
 
+@media (max-width: 991px) {
+  nav .navbar-nav .nav-item.active .nav-link {
+    border: 0;
+  }
+}
+
 nav.nav-on-scroll {
-  background: #ffffff17;
+  background: #354040d9;
 }
 
 .accent-button {
@@ -91,10 +118,9 @@ main section#vHome #landing .container .search .magnify {
   border: 0;
 }
 
-main section#vHome #landing .container .search a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+main section#vHome #landing .container .search .accent-button {
+  padding: .4rem 2rem;
+  border-radius: 0 5px 5px 0;
 }
 
 main section#vHome #landing #slanted {
@@ -369,7 +395,6 @@ main section#vAnimeRead #landing .container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0;
 }
 
 main section#vAnimeRead #landing .container .details h1 {
@@ -409,13 +434,6 @@ main section#vAnimeRead #episodes .container {
 
 main section#vAnimeRead #episodes .container .header {
   margin: 1em 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -463,7 +481,6 @@ main section#vAnimeRead #episodes .container .episodes {
 main section#vAnimeRead #episodes .container .episodes .card {
   padding: 0;
   border: 0;
-  width: 250px;
   background: transparent;
 }
 
@@ -480,10 +497,79 @@ main section#vAnimeRead #episodes .container .episodes .card .card-content h4 {
   font-size: 1em;
   margin: .5em 0;
   font-weight: bold;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 5px;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card .card-content h4 span.epiLength {
+  font-weight: 100;
+  color: #b3b3b3;
 }
 
 main section#vAnimeRead #episodes .container .episodes .card .card-content p {
   font-size: 12px;
   letter-spacing: 1px;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card.onload {
+  -webkit-animation: load-fade 1s linear infinite;
+          animation: load-fade 1s linear infinite;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card.onload .card-header svg {
+  width: 100%;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card.onload .card-content h4 {
+  padding: 1em;
+  background: #475656;
+  border-radius: 8px;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card.onload .card-content p {
+  padding: 2em;
+  background: #475656;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes load-fade {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: .2;
+  }
+  to {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes load-fade {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: .2;
+  }
+  to {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+main section#vAnimeRead #episodes .container .pagination {
+  margin: 2em 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main section#vAnimeRead #episodes .container .pagination .links a {
+  padding: .1rem 2rem;
+  background: #FF4B77;
+  font-weight: bold;
+  border-radius: 1rem;
 }
 /*# sourceMappingURL=main.css.map */

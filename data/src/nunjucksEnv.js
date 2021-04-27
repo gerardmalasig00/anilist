@@ -44,4 +44,28 @@ env.addFilter("shortenString", function (value) {
 
 });
 
+env.addFilter("active_class", (value, list, activeClass = "active") => {
+    value = value.replace(/\b[?, 0-9]+.*$/g, ""); //Will removed the query (ex. from "/er?s=Juan" to "/er")
+    if (Array.isArray(list)) {
+        for (let x = 0; x < list.length; x++) {
+            let o = list[x];
+            let typeString = Object.prototype.toString.call(o);
+            if (typeString.includes("RegExp")) {
+                if (o.test(value)) {
+                    return activeClass;
+                }
+            } else {
+                if (o === value) {
+                    return activeClass;
+                }
+            }
+        }
+    } else {
+        if (value === list) {
+            return activeClass;
+        }
+    }
+    return "";
+});
+
 module.exports = env;

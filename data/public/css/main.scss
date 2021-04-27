@@ -12,6 +12,8 @@ $colors : (
     @return map-get($colors, $name)
 };
 
+
+
 *{
     padding: 0;
     margin: 0;
@@ -24,26 +26,53 @@ body {
     color: white;
 }
 
+$midView: 991px;
+
+@mixin midView {
+    @media (max-width: #{$midView}) {
+        @content;
+    }
+};
 
 nav {
     z-index: 10;
+    padding-bottom: 0;
+
     .navbar-brand {
         font-weight: bold;
     }
     .navbar-nav {
+        @include midView {
+            padding: 1em 0;
+        };
 
         .nav-item {
             padding-left: 1em;
 
-            .nav-link.active {
+            @include midView {
+                padding: 0 1em;
+            };
+        }
+
+        .nav-item.active {
+            @include midView {
+                background: color(accent);
+            }
+            .nav-link {
+                font-weight: bold;
+                color: white;
                 border-bottom: 3px solid color(accent);
+
+                @include midView {
+                    border: 0;
+                }
             }
         }
     }
 }
 
 nav.nav-on-scroll {
-    background: #ffffff17;
+    background: #354040d9;
 }
 
 // Constants
@@ -95,10 +124,9 @@ main {
                         border: 0;
                     }
     
-                    a {
-                        text-decoration: none;
-                        color: white;
-                        font-weight: bold;
+                    .accent-button {
+                        padding: .4rem 2rem;
+                        border-radius: 0 5px 5px 0;
                     }
                 }
             }
@@ -306,7 +334,6 @@ main {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                padding: 0;
 
                 .details {
                     h1 {
@@ -344,8 +371,6 @@ main {
                 
                .header {
                    margin: 1em 0;
-                    display: flex;
-                    flex-direction: row;
                     align-items: center;
                     h2 {
                         font-size: clamp(25px, 1vw, 45px); 
@@ -383,7 +408,6 @@ main {
                    .card {
                         padding: 0;
                         border: 0;
-                       width: 250px;
                        background: transparent;
 
                        .card-header {
@@ -398,6 +422,13 @@ main {
                                 font-size: 1em;
                                 margin: .5em 0;
                                 font-weight: bold;
+                                display: grid;
+                                grid-gap: 5px;
+
+                                span.epiLength {
+                                    font-weight: 100;
+                                    color: darken(white, 30%);
+                                }
                            }
                            p {
                                 font-size: 12px;
@@ -405,7 +436,53 @@ main {
                            }
                        }
                    }
+
+                   .card.onload {
+                       animation: load-fade 1s linear infinite;
+                       .card-header {
+                           svg {
+                               width: 100%;
+                           }
+                       }
+                       .card-content {
+                           h4 {
+                               padding: 1em;
+                               background: lighten(color(light-dark), 8%);
+                               border-radius: 8px;
+                           }
+
+                           p {
+                                padding: 2em;
+                                background: lighten(color(light-dark), 8%);
+                                border-radius: 10px;
+                            }
+                       }
+                   }
+
+                   @keyframes load-fade {
+                       from {
+                            transform: translateX(-10px);
+                            opacity: .2;
+                       }
+
+                       to {
+                            opacity: .5;
+                            transform: translateX(0);
+                       }
+                   }
                }
+
+               .pagination {
+                    margin: 2em 0;
+                    justify-content: center;
+
+                    .links a {
+                        padding: .1rem 2rem;
+                        background: color(accent);
+                        font-weight: bold;
+                        border-radius: 1rem;
+                    }
+                }
             }
         }
     } 
