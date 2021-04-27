@@ -21,14 +21,6 @@ const configLoader = new pigura.ConfigLoader({
 })
 global.CONFIG = configLoader.getConfig()
 
-const credLoader = new pigura.ConfigLoader({
-    configName: './credentials/credentials.json',
-    appDir: APP_DIR,
-    env: ENV,
-    logging: true
-})
-global.CRED = credLoader.getConfig()
-
 //// Create our app
 let server = require('./data/src/express');
 server.listen(CONFIG.app.port, function () {
