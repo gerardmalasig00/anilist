@@ -24,7 +24,7 @@ global.CONFIG = configLoader.getConfig()
 //// Create our app
 let server = require('./data/src/express');
 var server_port = process.env.port || CONFIG.app.port;
-console.log(CONFIG)
+console.log(server_port)
 server.listen(server_port, function () {
     console.log(`App running in "${ENV}" mode at "${CONFIG.app.url}"`);
 });
