@@ -12,7 +12,6 @@ const pigura = require('pigura');
 //// Save full path of our root app directory and load config and credentials
 global.APP_DIR = path.resolve(__dirname).replace(/\\/g, '/'); // Turn back slash to slash for cross-platform compat
 global.ENV = lodash.get(process, 'env.NODE_ENV', 'dev')
-console.log(process.env)
 const configLoader = new pigura.ConfigLoader({
     configName: './configs/configs.json',
     appDir: APP_DIR,
@@ -23,7 +22,7 @@ global.CONFIG = configLoader.getConfig()
 
 //// Create our app
 let server = require('./data/src/express');
-let server_port = process.env.port || CONFIG.app.port;
+let server_port = process.env.PORT || CONFIG.app.port;
 
 server.listen(server_port, function () {
     console.log(`App running in "${ENV}" mode at "${CONFIG.app.url}"`);
