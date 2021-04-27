@@ -23,7 +23,9 @@ global.CONFIG = configLoader.getConfig()
 
 //// Create our app
 let server = require('./data/src/express');
-server.listen(process.env.port || CONFIG.app.port, function () {
+var server_port = process.env.port || CONFIG.app.port;
+console.log(CONFIG)
+server.listen(server_port, function () {
     console.log(`App running in "${ENV}" mode at "${CONFIG.app.url}"`);
 });
 server.keepAliveTimeout = 60000 * 2;
