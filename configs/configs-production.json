@@ -1,0 +1,31 @@
+{
+    "app": {
+        "url": "https://anilist-ph.herokuapp.com",
+        "dir": "${APP_DIR}",
+        "dirs": {
+            "data": "${APP_DIR}/data",
+            "src": "${APP_DIR}/src",
+            "public": "${APP_DIR}/data/public",
+            "view": "${APP_DIR}/data/view"
+        }
+    },
+    "nunjucks": {
+        "loader": {
+            "watch": true,
+            "noCache": true
+        },
+        "environment": {
+            "autoescape": true,
+            "throwOnUndefined": false,
+            "trimBlocks": false,
+            "lstripBlocks": false
+        }
+    },
+    "anime": {
+        "uri": "https://kitsu.io/api/edge",
+        "headers": {
+            "Accept": "application/vnd.api+json",
+            "Content-Type": "application/vnd.api+json"
+        }
+    }
+}

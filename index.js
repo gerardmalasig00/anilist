@@ -12,8 +12,15 @@ const pigura = require('pigura');
 //// Save full path of our root app directory and load config and credentials
 global.APP_DIR = path.resolve(__dirname).replace(/\\/g, '/'); // Turn back slash to slash for cross-platform compat
 global.ENV = lodash.get(process, 'env.NODE_ENV', 'dev')
+
+let config;
+if (ENV === 'dev') {
+    config = './configs/configs.json'
+} else {
+    config = './configs/configs-production.json'
+}
 const configLoader = new pigura.ConfigLoader({
-    configName: './configs/configs.json',
+    configName: config,
     appDir: APP_DIR,
     env: ENV,
     logging: true
