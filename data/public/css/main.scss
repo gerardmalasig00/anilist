@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+$colors : (
+    dark: #212121,
+    light-dark: #354040,
+    dark-teal: #0D7377,
+    teal: #00DECC, 
+    accent: #FF4B77
+);
+
+@function color($name) {
+    @return map-get($colors, $name)
+};
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: color(light-dark);
+    color: white;
+}
+
+
+nav {
+    z-index: 10;
+    .navbar-brand {
+        font-weight: bold;
+    }
+    .navbar-nav {
+
+        .nav-item {
+            padding-left: 1em;
+
+            .nav-link.active {
+                border-bottom: 3px solid color(accent);
+            }
+        }
+    }
+}
+
+nav.nav-on-scroll {
+    background: #ffffff17;
+}
+
+// Constants
+.accent-button {
+    background: color(accent);
+    text-decoration: none;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    padding: .8rem 2rem;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+.accent-button:hover {
+    color: white;
+    background: lighten(color(accent), 5%)
+}
+
+main {
+    section#vHome {
+        #landing {
+            background: linear-gradient(135deg, #212121, #0D7377, rgba(0, 0, 0, .7));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+    
+            .container {
+                padding: 0 2em;
+                z-index: 2;
+    
+                h1 {
+                    font-size: clamp(15px, 1vw, 30px);
+                    font-weight: 400;
+                    color: color(teal)
+                }
+                h2 {
+                    font-size: clamp(25px, 2vw, 45px);
+                    font-weight: bold;
+                    margin-bottom: 2em;
+                }
+                .search {
+                    box-shadow: 5px 5px 5px rgba(0,0,0, .25);
+    
+                    .magnify {
+                        border: 0;
+                    }
+    
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+            }
+    
+            #slanted {
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+        
+        #featured-section {
+            background-color: color(light-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            .container {
+                .header{
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    margin-bottom: 1rem;
+                    &:before {
+                        content: '';
+                        background-color: color(accent);
+                        padding: 3px;
+                        margin-right: 1rem;
+                        box-shadow: 5px 5px 5px rgba(0, 0, 0, .2);
+                    }
+                }
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                    grid-gap: 2em;
+                    padding: 1em 3em 0;
+    
+                    .card {
+                        min-height: 320px;
+                        background-color: transparent;
+                        border: 0;
+    
+                        .card-header {
+                            border: 0;
+                            padding: 0;
+    
+                            .age-rate {
+                                position: absolute;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 28px;
+                                height: 39px;
+                                background: #354040;
+                                clip-path: polygon(100% 0, 100% 100%, 51% 71%, 0 100%, 0 0);
+                                left: 5%;
+                                font-weight: bold;
+                            }
+    
+                            img {
+                                width: 100%;
+                                border-radius: 3%;
+                                box-shadow: 0 5px 30px rgba(0, 222, 204, .25)
+                            }
+                        }
+                        .card-content {
+                            border: 0;
+                            padding: 0;
+                            margin: 1em 0;
+                            line-height: 1rem;
+
+                            div {
+                                display: none;
+                            }
+
+                            div.show {
+                                display: block;
+                                h3 {
+                                    font-weight: bold;
+                                    font-size: 12px;
+                                }
+                                .anime-details {
+                                    display: flex;
+                                    p {
+                                        font-size: 11px;
+                                        font-weight: 500;
+                                    }
+                                    div {
+                                        display: inherit;
+                                        margin-left: auto;
+        
+                                        svg {
+                                            fill: color(accent);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+    
+                    }
+                    
+                    .card-hovered {
+                        background: linear-gradient(360deg, #21212199, rgba(0, 88, 88, .65) );
+                        transform: translateY(-100px);
+                        z-index: 10;
+
+                        transition: .5s ease-in-out;
+                        .card-header {
+                            display: flex;
+                            justify-content: center;
+                            clip-path: circle(90% at 50% 1%);
+                            transition: .7s ease-in-out;
+    
+                            .age-rate {
+                                width: 26px!important;
+                                left: 4%;
+                                font-size: 10px;
+                                display: grid;
+                                place-content: center;
+                            }
+    
+                            img {
+                                width: 60%;
+                                border-radius: 3%;
+                                transform: translateY(-10%);
+                            }
+                        }
+                        .card-content {
+
+                            div.show.on-hover {
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                margin: 0;
+                                padding: 0 1em;
+                                h3 {
+                                    font-weight: bold;
+                                    font-size: 12px;
+                                }
+
+                                h4 {
+                                    font-size: 10px;
+                                }
+                                p {
+                                    font-size: 12px;
+                                }
+                                .anime-details {
+                                    display: flex;
+                                    flex-direction: column;
+                                    .anime-rank {
+                                        text-align: center;
+                                        column-count: 2;
+                                        margin: 0;
+                                        justify-content: space-around;
+                                        align-items: center;
+
+                                        div {
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: center;
+                                            align-items: center;
+                                            text-align: center;
+                                            margin: 0;
+
+                                            h4 {
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                            }
+
+                                            p {
+                                                font-size: 10px;
+                                            }
+                                        }
+                                    }
+                                    .card-button {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin: 0;
+                                        text-align: center;
+
+                                        a {
+                                            font-size: 12px;
+                                            padding: .5em 2em;
+                                            background: color(teal);
+                                            text-decoration: none;
+                                            border-radius: 25em;
+                                            font-weight: bold;
+                                            color: white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section#vAnimeRead {
+        #landing {
+            .container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0;
+
+                .details {
+                    h1 {
+                        font-size: clamp(50px, 5vw, 100px);
+                        font-weight: bold;
+                    }
+    
+                    p {
+                        span {
+                            padding: .1rem 1rem;
+                            border-radius: 25px;
+                            background: darken(color(teal), 10%);
+                            color: white;
+                            font-weight: bold;
+                            font-size: 12px;
+                        }
+                    }
+
+                    h2 {
+                        font-size: 15px;
+                        line-height: 1.5;
+                        margin: 1rem 0;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+
+        #episodes {
+            .container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                
+               .header {
+                   margin: 1em 0;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    h2 {
+                        font-size: clamp(25px, 1vw, 45px); 
+                        font-weight: bold;
+                        margin: 0;
+
+                        &:after {
+                            content: '';
+                            background: #ff4b77;
+                            padding: 1px;
+                            margin: 0 1em;
+                        }
+                    }
+
+                    p {
+                        font-size: clamp(25px, 1vw, 45px); 
+                        margin: 0;
+                    }
+               }
+               .content {
+                   margin: 1em 0;
+                   h3 {
+                       font-size: 1rem;
+                       color: darken(white, 30%)
+                   }
+                   p {
+                        font-size: 1rem;
+                    }
+               }
+               .episodes {
+                   display: grid;
+                   grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+                   grid-gap: 1rem;
+
+                   .card {
+                        padding: 0;
+                        border: 0;
+                       width: 250px;
+                       background: transparent;
+
+                       .card-header {
+                           padding: 0;
+                           border: 0;
+                            img {
+                                width: 100%;
+                            }    
+                       }
+                       .card-content {
+                           h4 {
+                                font-size: 1em;
+                                margin: .5em 0;
+                                font-weight: bold;
+                           }
+                           p {
+                                font-size: 12px;
+                                letter-spacing: 1px;
+                           }
+                       }
+                   }
+               }
+            }
+        }
+    } 
+
+}

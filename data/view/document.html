@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{{title|default(app.title, true)}}</title>
+    <meta name="description" content="{{app.description}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{app.title}}" />
+    <meta property="og:description" content="{{app.description}}" />
+    {% block styles %}
+        <link rel="stylesheet" href="{{app.url}}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{app.url}}/css/main.css">
+    {% endblock %}
+    <script>
+        window.config = {{config|stringify|safe}}
+    </script>
+</head>
+
+<body class="{{bodyClass}}">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pb-0 pb-sm-2">
+        <div class="container">
+            <a class="navbar-brand" href="#">Anilist</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav" style="margin-left:auto;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Discover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    
+    {% block scripts %}
+        <script src="{{app.url}}/js/jquery-3.3.1.min.js"></script>
+        <script src="{{app.url}}/js/popper.min.js"></script>
+        <script src="{{app.url}}/js/bootstrap.bundle.min.js"></script>
+        <script src="{{app.url}}/js/moment.min.js"></script>
+        <script src="{{app.url}}/js/lodash.min.js"></script>
+        <script src="{{app.url}}/js/axios.min.js"></script>
+        <script src="{{app.url}}/js/vue.js"></script>
+        <script src="{{app.url}}/js/vuejs-autocomplete.js"></script>
+        <script src="{{app.url}}/js/script.js"></script>
+    {% endblock %}
+</body>
+</html>

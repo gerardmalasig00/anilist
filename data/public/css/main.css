@@ -1,0 +1,489 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #354040;
+  color: white;
+}
+
+nav {
+  z-index: 10;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+}
+
+nav .navbar-nav .nav-item {
+  padding-left: 1em;
+}
+
+nav .navbar-nav .nav-item .nav-link.active {
+  border-bottom: 3px solid #FF4B77;
+}
+
+nav.nav-on-scroll {
+  background: #ffffff17;
+}
+
+.accent-button {
+  background: #FF4B77;
+  text-decoration: none;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  padding: .8rem 2rem;
+  border-radius: 5px;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.accent-button:hover {
+  color: white;
+  background: #ff658a;
+}
+
+main section#vHome #landing {
+  background: linear-gradient(135deg, #212121, #0D7377, rgba(0, 0, 0, 0.7));
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+main section#vHome #landing .container {
+  padding: 0 2em;
+  z-index: 2;
+}
+
+main section#vHome #landing .container h1 {
+  font-size: clamp(15px, 1vw, 30px);
+  font-weight: 400;
+  color: #00DECC;
+}
+
+main section#vHome #landing .container h2 {
+  font-size: clamp(25px, 2vw, 45px);
+  font-weight: bold;
+  margin-bottom: 2em;
+}
+
+main section#vHome #landing .container .search {
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+main section#vHome #landing .container .search .magnify {
+  border: 0;
+}
+
+main section#vHome #landing .container .search a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+main section#vHome #landing #slanted {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+main section#vHome #featured-section {
+  background-color: #354040;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section#vHome #featured-section .container .header {
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+main section#vHome #featured-section .container .header:before {
+  content: '';
+  background-color: #FF4B77;
+  padding: 3px;
+  margin-right: 1rem;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+main section#vHome #featured-section .container .cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(180px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-gap: 2em;
+  padding: 1em 3em 0;
+}
+
+main section#vHome #featured-section .container .cards .card {
+  min-height: 320px;
+  background-color: transparent;
+  border: 0;
+}
+
+main section#vHome #featured-section .container .cards .card .card-header {
+  border: 0;
+  padding: 0;
+}
+
+main section#vHome #featured-section .container .cards .card .card-header .age-rate {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 28px;
+  height: 39px;
+  background: #354040;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 51% 71%, 0 100%, 0 0);
+          clip-path: polygon(100% 0, 100% 100%, 51% 71%, 0 100%, 0 0);
+  left: 5%;
+  font-weight: bold;
+}
+
+main section#vHome #featured-section .container .cards .card .card-header img {
+  width: 100%;
+  border-radius: 3%;
+  -webkit-box-shadow: 0 5px 30px rgba(0, 222, 204, 0.25);
+          box-shadow: 0 5px 30px rgba(0, 222, 204, 0.25);
+}
+
+main section#vHome #featured-section .container .cards .card .card-content {
+  border: 0;
+  padding: 0;
+  margin: 1em 0;
+  line-height: 1rem;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div {
+  display: none;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show {
+  display: block;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show h3 {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show .anime-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show .anime-details p {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show .anime-details div {
+  display: inherit;
+  margin-left: auto;
+}
+
+main section#vHome #featured-section .container .cards .card .card-content div.show .anime-details div svg {
+  fill: #FF4B77;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered {
+  background: -webkit-gradient(linear, left bottom, left top, from(#21212199), to(rgba(0, 88, 88, 0.65)));
+  background: linear-gradient(360deg, #21212199, rgba(0, 88, 88, 0.65));
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+  z-index: 10;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-clip-path: circle(90% at 50% 1%);
+          clip-path: circle(90% at 50% 1%);
+  -webkit-transition: .7s ease-in-out;
+  transition: .7s ease-in-out;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-header .age-rate {
+  width: 26px !important;
+  left: 4%;
+  font-size: 10px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-header img {
+  width: 60%;
+  border-radius: 3%;
+  -webkit-transform: translateY(-10%);
+          transform: translateY(-10%);
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  margin: 0;
+  padding: 0 1em;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover h3 {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover h4 {
+  font-size: 10px;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover p {
+  font-size: 12px;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .anime-rank {
+  text-align: center;
+  -webkit-column-count: 2;
+          column-count: 2;
+  margin: 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .anime-rank div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .anime-rank div h4 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .anime-rank div p {
+  font-size: 10px;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .card-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  text-align: center;
+}
+
+main section#vHome #featured-section .container .cards .card-hovered .card-content div.show.on-hover .anime-details .card-button a {
+  font-size: 12px;
+  padding: .5em 2em;
+  background: #00DECC;
+  text-decoration: none;
+  border-radius: 25em;
+  font-weight: bold;
+  color: white;
+}
+
+main section#vAnimeRead #landing .container {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+}
+
+main section#vAnimeRead #landing .container .details h1 {
+  font-size: clamp(50px, 5vw, 100px);
+  font-weight: bold;
+}
+
+main section#vAnimeRead #landing .container .details p span {
+  padding: .1rem 1rem;
+  border-radius: 25px;
+  background: #00ab9d;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+main section#vAnimeRead #landing .container .details h2 {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 1rem 0;
+  letter-spacing: 1px;
+}
+
+main section#vAnimeRead #episodes .container {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main section#vAnimeRead #episodes .container .header {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section#vAnimeRead #episodes .container .header h2 {
+  font-size: clamp(25px, 1vw, 45px);
+  font-weight: bold;
+  margin: 0;
+}
+
+main section#vAnimeRead #episodes .container .header h2:after {
+  content: '';
+  background: #ff4b77;
+  padding: 1px;
+  margin: 0 1em;
+}
+
+main section#vAnimeRead #episodes .container .header p {
+  font-size: clamp(25px, 1vw, 45px);
+  margin: 0;
+}
+
+main section#vAnimeRead #episodes .container .content {
+  margin: 1em 0;
+}
+
+main section#vAnimeRead #episodes .container .content h3 {
+  font-size: 1rem;
+  color: #b3b3b3;
+}
+
+main section#vAnimeRead #episodes .container .content p {
+  font-size: 1rem;
+}
+
+main section#vAnimeRead #episodes .container .episodes {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(245px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  grid-gap: 1rem;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card {
+  padding: 0;
+  border: 0;
+  width: 250px;
+  background: transparent;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card .card-header {
+  padding: 0;
+  border: 0;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card .card-header img {
+  width: 100%;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card .card-content h4 {
+  font-size: 1em;
+  margin: .5em 0;
+  font-weight: bold;
+}
+
+main section#vAnimeRead #episodes .container .episodes .card .card-content p {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+/*# sourceMappingURL=main.css.map */

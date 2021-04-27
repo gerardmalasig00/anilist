@@ -1,0 +1,24 @@
+{
+  "name": "anilist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set NODE_ENV=dev&& nodemon index.js"
+  },
+  "author": "Gerardo Malasig",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "connect-sqlite3": "^0.9.11",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.5",
+    "nodemon": "^2.0.7",
+    "nunjucks": "^3.2.3",
+    "pigura": "^1.0.1"
+  }
+}

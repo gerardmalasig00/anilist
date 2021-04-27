@@ -1,0 +1,66 @@
+{% extends "document.html" %}
+
+{% block body %}
+    <section id="vAnimeRead">
+        <div id="landing" >
+            <div class="container" 
+            style="background:linear-gradient(to right, rgba(53, 64, 64, 1) 10%, transparent), url({{anime.attributes.coverImage.original}})no-repeat center center;">
+                <div class="details w-50 w-sm-100">
+                    <h1>{{anime.attributes.canonicalTitle}}</h1>
+                    <p>
+                        <span>{{anime.attributes.startDate|formatDate("YYYY")}}</span>
+                        <span class="line">{{anime.attributes.ageRating}}</span>
+                        <span class="line">{{anime.attributes.ageRatingGuide}}</span>
+                        <span class="line">{{anime.attributes.episodeCount}} Episodes</span>
+                    </p>
+                    <h2>{{anime.attributes.synopsis}}</h2>
+                </div>
+                <div class="mt-3">
+                    <a href="#episodes" class="accent-button">View Episodes</a>
+                </div>
+            </div>
+        </div>
+        <div id="episodes">
+            <div class="container">
+                <div class="header">
+                    <h2>Episodes</h2>
+                    <p>{{anime.attributes.canonicalTitle}}</p>
+                </div>
+                <div class="content">
+                    <h3>Release Date: {{anime.attributes.startDate|formatDate("MMM DD YYYY")}}</h3>
+                    <p>{{anime.attributes.description}}</p>
+                </div>
+                <div class="episodes">
+                    {% for episode in episodes %}
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="{{episode.attributes.thumbnail.original}}" alt="Thumbnail">
+                            </div>
+                            <div class="card-content">
+                                <h4>{{episode.attributes.number}}. {{episode.attributes.canonicalTitle}}</h4>
+                                <p>{{episode.attributes.synopsis|shortenString}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script>
+        var vAnimeRead = new Vue({
+            el: '#vAnimeRead',
+            delimiters: ["${", "}"],
+            mixins: [
+            ],
+            components: {
+            },
+            data: {
+            }
+        })    
+    </script>
+    
+{% endblock %}
